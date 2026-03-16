@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Tejaswini Phalke — .NET Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#ffffff;
+  --bg2:#f8f9fa;
+  --bg3:#f1f3f5;
+  --ink:#111827;
+  --ink2:#4b5563;
+  --ink3:#9ca3af;
+  --blue:#2563eb;
+  --blue2:#1d4ed8;
+  --blue-light:#eff6ff;
+  --border:#e5e7eb;
+  --font:'Plus Jakarta Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6}
+
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,255,255,0.95);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+  padding:0 2rem;
+  display:flex;align-items:center;justify-content:space-between;
+  height:64px;
+}
+.logo{font-weight:700;font-size:1.05rem;color:var(--ink)}
+.logo span{color:var(--blue)}
+.nav-links{display:flex;gap:0.25rem}
+.nav-links a{
+  font-size:0.85rem;font-weight:500;color:var(--ink2);
+  text-decoration:none;padding:0.4rem 0.85rem;border-radius:6px;
+  transition:background 0.15s,color 0.15s;
+}
+.nav-links a:hover{background:var(--bg2);color:var(--ink)}
+.nav-btn{
+  font-size:0.85rem;font-weight:600;color:#fff;background:var(--blue);
+  border:none;padding:0.45rem 1.2rem;border-radius:8px;cursor:pointer;
+  text-decoration:none;transition:background 0.15s;
+}
+.nav-btn:hover{background:var(--blue2)}
+
+/* HERO */
+.hero{
+  max-width:680px;margin:0 auto;
+  padding:6rem 2rem 5rem;text-align:center;
+}
+.hero-avatar{
+  width:80px;height:80px;border-radius:50%;
+  background:linear-gradient(135deg,var(--blue),#7c3aed);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.8rem;font-weight:700;color:#fff;
+  margin:0 auto 1.5rem;letter-spacing:-1px;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:var(--blue-light);color:var(--blue);
+  font-size:0.78rem;font-weight:600;padding:4px 12px;border-radius:20px;
+  margin-bottom:1.25rem;
+}
+.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--blue)}
+.hero h1{
+  font-size:clamp(2.2rem,5vw,3.2rem);font-weight:700;
+  letter-spacing:-1.5px;line-height:1.15;margin-bottom:1rem;color:var(--ink);
+}
+.hero p{
+  font-size:1.05rem;color:var(--ink2);font-weight:400;
+  max-width:480px;margin:0 auto 2rem;line-height:1.7;
+}
+.hero-btns{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{
+  background:var(--blue);color:#fff;border:none;
+  padding:0.65rem 1.5rem;border-radius:8px;font-family:var(--font);
+  font-size:0.9rem;font-weight:600;cursor:pointer;text-decoration:none;
+  transition:background 0.15s,transform 0.1s;display:inline-block;
+}
+.btn-primary:hover{background:var(--blue2);transform:translateY(-1px)}
+.btn-secondary{
+  background:var(--bg2);color:var(--ink);border:1px solid var(--border);
+  padding:0.65rem 1.5rem;border-radius:8px;font-family:var(--font);
+  font-size:0.9rem;font-weight:600;cursor:pointer;text-decoration:none;
+  transition:background 0.15s;display:inline-block;
+}
+.btn-secondary:hover{background:var(--bg3)}
+.hero-links{
+  display:flex;justify-content:center;gap:1.5rem;margin-top:2.5rem;
+  padding-top:2rem;border-top:1px solid var(--border);
+}
+.hero-links a{
+  font-size:0.82rem;font-weight:500;color:var(--ink3);
+  text-decoration:none;transition:color 0.15s;
+  display:flex;align-items:center;gap:0.4rem;
+}
+.hero-links a:hover{color:var(--blue)}
+
+/* STATS */
+.stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  max-width:600px;margin:0 auto;
+  border:1px solid var(--border);border-radius:12px;overflow:hidden;
+}
+.stat-box{
+  padding:1.5rem;text-align:center;
+  border-right:1px solid var(--border);
+}
+.stat-box:last-child{border-right:none}
+.stat-n{font-size:1.9rem;font-weight:700;color:var(--blue);line-height:1}
+.stat-l{font-size:0.72rem;font-weight:500;color:var(--ink3);margin-top:4px;text-transform:uppercase;letter-spacing:0.5px}
+
+/* SECTION */
+.section{max-width:860px;margin:0 auto;padding:5rem 2rem}
+.section-label{
+  font-size:0.72rem;font-weight:700;color:var(--blue);
+  letter-spacing:2px;text-transform:uppercase;margin-bottom:0.5rem;
+}
+.section-title{
+  font-size:clamp(1.6rem,3vw,2rem);font-weight:700;
+  letter-spacing:-0.5px;margin-bottom:2.5rem;color:var(--ink);
+}
+hr.divider{border:none;border-top:1px solid var(--border);margin:0 2rem}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1rem}
+.skill-card{
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:10px;padding:1.25rem;
+  transition:border-color 0.2s,box-shadow 0.2s;
+}
+.skill-card:hover{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,0.06)}
+.skill-card-head{
+  display:flex;align-items:center;gap:0.6rem;margin-bottom:1rem;
+}
+.skill-card-icon{
+  width:32px;height:32px;border-radius:8px;
+  background:var(--blue-light);display:flex;align-items:center;justify-content:center;
+  font-size:0.9rem;flex-shrink:0;
+}
+.skill-card-title{font-size:0.88rem;font-weight:700;color:var(--ink)}
+.skill-pills{display:flex;flex-wrap:wrap;gap:5px}
+.pill{
+  font-size:0.73rem;font-weight:500;
+  padding:3px 9px;border-radius:20px;
+  background:var(--bg2);color:var(--ink2);border:1px solid var(--border);
+}
+.pill.blue{background:var(--blue-light);color:var(--blue);border-color:rgba(37,99,235,0.15)}
+
+/* PROJECTS */
+.projects-list{display:flex;flex-direction:column;gap:1rem}
+.proj-card{
+  border:1px solid var(--border);border-radius:12px;padding:1.5rem;
+  display:grid;grid-template-columns:48px 1fr auto;gap:1.25rem;align-items:start;
+  transition:border-color 0.2s,box-shadow 0.2s;text-decoration:none;color:inherit;
+  background:var(--bg);
+}
+.proj-card:hover{border-color:var(--blue);box-shadow:0 4px 20px rgba(0,0,0,0.06)}
+.proj-emoji{
+  width:48px;height:48px;border-radius:10px;
+  background:var(--blue-light);display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;flex-shrink:0;
+}
+.proj-body{display:flex;flex-direction:column;gap:0.75rem}
+.proj-title{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:0.35rem}
+.proj-desc{font-size:0.85rem;color:var(--ink2);line-height:1.6;margin-bottom:0.75rem}
+.proj-tags{display:flex;flex-wrap:wrap;gap:5px}
+.proj-tag{
+  font-size:0.7rem;font-weight:500;padding:2px 8px;
+  border-radius:4px;background:var(--bg2);color:var(--ink3);
+  border:1px solid var(--border);
+}
+.proj-arrow{
+  font-size:1.1rem;color:var(--ink3);padding-top:2px;
+  transition:color 0.15s,transform 0.15s;flex-shrink:0;
+}
+.proj-card:hover .proj-arrow{color:var(--blue);transform:translate(2px,-2px)}
+
+/* EXPERIENCE */
+.exp-card{
+  border:1px solid var(--border);border-radius:12px;overflow:hidden;
+}
+.exp-top{
+  padding:1.5rem;display:flex;align-items:flex-start;
+  justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  border-bottom:1px solid var(--border);
+}
+.exp-co{font-size:1rem;font-weight:700;color:var(--ink)}
+.exp-role{font-size:0.85rem;font-weight:500;color:var(--blue);margin-top:2px}
+.exp-period{
+  font-size:0.75rem;font-weight:600;padding:4px 10px;
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:20px;color:var(--ink2);white-space:nowrap;
+}
+.exp-list{padding:1.25rem 1.5rem;list-style:none;display:flex;flex-direction:column;gap:0.6rem}
+.exp-list li{
+  font-size:0.88rem;color:var(--ink2);
+  display:flex;align-items:flex-start;gap:0.6rem;line-height:1.6;
+}
+.exp-list li::before{
+  content:'';width:5px;height:5px;border-radius:50%;
+  background:var(--blue);flex-shrink:0;margin-top:7px;
+}
+
+/* EDUCATION */
+.edu-list{display:flex;flex-direction:column;gap:0}
+.edu-item{
+  display:flex;align-items:center;gap:1.25rem;
+  padding:1.25rem;border:1px solid var(--border);
+  border-bottom:none;transition:background 0.15s;
+}
+.edu-item:first-child{border-radius:12px 12px 0 0}
+.edu-item:last-child{border-bottom:1px solid var(--border);border-radius:0 0 12px 12px}
+.edu-item:hover{background:var(--bg2)}
+.edu-icon{
+  width:40px;height:40px;border-radius:10px;
+  background:var(--blue-light);display:flex;align-items:center;
+  justify-content:center;font-size:1.1rem;flex-shrink:0;
+}
+.edu-degree{font-size:0.92rem;font-weight:700;color:var(--ink)}
+.edu-inst{font-size:0.8rem;color:var(--ink2);margin-top:2px}
+.edu-year{
+  margin-left:auto;font-size:0.75rem;font-weight:600;
+  color:var(--ink3);white-space:nowrap;
+}
+
+/* CONTACT */
+.contact-box{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:16px;padding:2.5rem;text-align:center;
+}
+.contact-box h3{font-size:1.5rem;font-weight:700;letter-spacing:-0.5px;margin-bottom:0.5rem}
+.contact-box p{font-size:0.95rem;color:var(--ink2);margin-bottom:2rem;max-width:400px;margin-left:auto;margin-right:auto}
+.contact-links-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));
+  gap:0.75rem;margin-top:2rem;text-align:left;
+}
+.contact-link{
+  display:flex;align-items:center;gap:0.75rem;
+  padding:0.85rem 1rem;background:var(--bg);border:1px solid var(--border);
+  border-radius:10px;text-decoration:none;color:var(--ink);
+  transition:border-color 0.15s,transform 0.1s;
+}
+.contact-link:hover{border-color:var(--blue);transform:translateY(-1px)}
+.cl-ic{
+  width:34px;height:34px;border-radius:8px;background:var(--blue-light);
+  display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;
+}
+.cl-lbl{font-size:0.65rem;font-weight:700;color:var(--ink3);text-transform:uppercase;letter-spacing:0.5px}
+.cl-val{font-size:0.8rem;font-weight:500;color:var(--ink)}
+
+/* FOOTER */
+footer{
+  border-top:1px solid var(--border);
+  padding:1.5rem 2rem;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:0.75rem;
+  max-width:860px;margin:0 auto;
+}
+.footer-text{font-size:0.8rem;color:var(--ink3)}
+.footer-links{display:flex;gap:1rem}
+.footer-links a{
+  font-size:0.8rem;color:var(--ink3);text-decoration:none;
+  transition:color 0.15s;
+}
+.footer-links a:hover{color:var(--blue)}
+
+/* Fade in */
+.fade-in{opacity:0;transform:translateY(16px);transition:opacity 0.5s ease,transform 0.5s ease}
+.fade-in.visible{opacity:1;transform:none}
+
+@media(max-width:600px){
+  .nav-links{display:none}
+  .stats{grid-template-columns:repeat(3,1fr)}
+  .proj-card{grid-template-columns:40px 1fr}
+  .proj-arrow{display:none}
+  .hero{padding:4rem 1.5rem 3rem}
+  .section{padding:3.5rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Tejaswini<span>.</span></div>
+  <div class="nav-links">
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+  </div>
+  <a href="mailto:tejaswiniphalke34@gmail.com" class="nav-btn">Contact</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-avatar">TP</div>
+  <div class="hero-badge">Open to Opportunities</div>
+  <h1>Tejaswini Phalke</h1>
+  <p>Aspiring .NET Developer with expertise in C#, ASP.NET Core, Web API, and SQL Server — passionate about building clean, scalable web applications.</p>
+  <div class="hero-btns">
+    <a href="#projects" class="btn-primary">View Projects</a>
+    <a href="https://github.com/tejuPhalke" target="_blank" class="btn-secondary">GitHub ↗</a>
+    <a href="https://www.linkedin.com/in/tejaswini-phalke-8826382a6/" target="_blank" class="btn-secondary">LinkedIn ↗</a>
+  </div>
+  <div class="hero-links">
+    <a href="mailto:tejaswiniphalke34@gmail.com">✉ tejaswiniphalke34@gmail.com</a>
+    <a href="tel:+918010124404">📞 +91 8010124404</a>
+  </div>
+</section>
+
+<!-- STATS -->
+<div style="max-width:860px;margin:0 auto;padding:0 2rem 4rem">
+  <div class="stats fade-in">
+    <div class="stat-box">
+      <div class="stat-n" data-target="3">0</div>
+      <div class="stat-l">Projects</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-n" data-target="6">0</div>
+      <div class="stat-l">Months Training</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-n" data-target="10">0</div>
+      <div class="stat-l">Technologies</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="section-label">Technical Skills</div>
+  <div class="section-title">What I work with</div>
+  <div class="skills-grid">
+    <div class="skill-card fade-in">
+      <div class="skill-card-head">
+        <div class="skill-card-icon">⌨️</div>
+        <div class="skill-card-title">Languages</div>
+      </div>
+      <div class="skill-pills">
+        <span class="pill blue">C#</span>
+        <span class="pill blue">HTML5</span>
+        <span class="pill blue">CSS3</span>
+        <span class="pill">JavaScript</span>
+        <span class="pill">Bootstrap</span>
+        <span class="pill">Core Java</span>
+      </div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-card-head">
+        <div class="skill-card-icon">🔧</div>
+        <div class="skill-card-title">Frameworks</div>
+      </div>
+      <div class="skill-pills">
+        <span class="pill blue">ASP.NET MVC</span>
+        <span class="pill blue">ASP.NET Core</span>
+        <span class="pill">Web API</span>
+        <span class="pill">Entity Framework</span>
+      </div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-card-head">
+        <div class="skill-card-icon">🗄️</div>
+        <div class="skill-card-title">Databases</div>
+      </div>
+      <div class="skill-pills">
+        <span class="pill blue">SQL Server</span>
+        <span class="pill">MySQL</span>
+        <span class="pill">ADO.NET</span>
+      </div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-card-head">
+        <div class="skill-card-icon">🛠️</div>
+        <div class="skill-card-title">Tools</div>
+      </div>
+      <div class="skill-pills">
+        <span class="pill blue">Visual Studio</span>
+        <span class="pill">VS Code</span>
+        <span class="pill">Git / GitHub</span>
+        <span class="pill">Postman</span>
+      </div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-card-head">
+        <div class="skill-card-icon">💡</div>
+        <div class="skill-card-title">Concepts</div>
+      </div>
+      <div class="skill-pills">
+        <span class="pill blue">OOP</span>
+        <span class="pill">Design Patterns</span>
+        <span class="pill">Multithreading</span>
+        <span class="pill">Exception Handling</span>
+        <span class="pill">Collections</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <div class="section-label">Portfolio</div>
+  <div class="section-title">Key Projects</div>
+  <div class="projects-list">
+    <div class="proj-card fade-in">
+      <div class="proj-emoji">🌾</div>
+      <div class="proj-body">
+        <div class="proj-title">Digital Farm Assistant</div>
+        <div class="proj-desc">Comprehensive web farming assistant with weather monitoring, fertilizer calculation, profit analysis, and market price tracking. Fully responsive across all devices.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">HTML5</span>
+          <span class="proj-tag">CSS3</span>
+          <span class="proj-tag">JavaScript</span>
+          <span class="proj-tag">Responsive Design</span>
+        </div>
+      </div>
+      <div class="proj-arrow">↗</div>
+    </div>
+    <div class="proj-card fade-in">
+      <div class="proj-emoji">📇</div>
+      <div class="proj-body">
+        <div class="proj-title">Contact Book Application</div>
+        <div class="proj-desc">C# console app with user registration, login, and CRUD on contacts. File-based persistence using Lists &amp; Dictionaries with modular design and input validation.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">C#</span>
+          <span class="proj-tag">File Handling</span>
+          <span class="proj-tag">OOP</span>
+          <span class="proj-tag">Collections</span>
+        </div>
+      </div>
+      <div class="proj-arrow">↗</div>
+    </div>
+    <div class="proj-card fade-in">
+      <div class="proj-emoji">💻</div>
+      <div class="proj-body">
+        <div class="proj-title">Laptop Repair Management System</div>
+        <div class="proj-desc">Full-stack app for repair workflow management — customer registration, service requests, order tracking, and admin dashboard with role-based access control.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">ASP.NET</span>
+          <span class="proj-tag">C#</span>
+          <span class="proj-tag">SQL Server</span>
+          <span class="proj-tag">ADO.NET</span>
+          <span class="proj-tag">Bootstrap</span>
+        </div>
+      </div>
+      <div class="proj-arrow">↗</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="section-label">Work Experience</div>
+  <div class="section-title">Professional Training</div>
+  <div class="exp-card fade-in">
+    <div class="exp-top">
+      <div>
+        <div class="exp-co">Fortune Cloud Technologies Pvt Ltd</div>
+        <div class="exp-role">.NET Full-Stack Development Trainee</div>
+      </div>
+      <div class="exp-period">Jul 2025 — Jan 2026</div>
+    </div>
+    <ul class="exp-list">
+      <li>Developed full-stack web applications using ASP.NET Core, Web API, Entity Framework, and SQL Server</li>
+      <li>Designed and implemented end-to-end applications using ASP.NET MVC architecture</li>
+      <li>Built responsive frontends using HTML, CSS, and JavaScript integrated with ASP.NET MVC backends</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- EDUCATION -->
+<section class="section" id="education">
+  <div class="section-label">Education</div>
+  <div class="section-title">Academic Background</div>
+  <div class="edu-list fade-in">
+    <div class="edu-item">
+      <div class="edu-icon">🎓</div>
+      <div>
+        <div class="edu-degree">Bachelor of Computer Science</div>
+        <div class="edu-inst">MGM College of CS &amp; IT, Nanded</div>
+      </div>
+      <div class="edu-year">2022 – 2025</div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-icon">📚</div>
+      <div>
+        <div class="edu-degree">Higher Secondary Certificate (HSC)</div>
+        <div class="edu-inst">Vivekanandh Jr. College, Hadgaon</div>
+      </div>
+      <div class="edu-year">2021 – 2022</div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-icon">✏️</div>
+      <div>
+        <div class="edu-degree">Secondary School Certificate (SSC)</div>
+        <div class="edu-inst">Vidyasagar Girls' High School, Tamsa</div>
+      </div>
+      <div class="edu-year">2019 – 2020</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="contact-box fade-in">
+    <h3>Let's Connect</h3>
+    <p>Open to .NET developer roles, internships, and exciting projects. Feel free to reach out!</p>
+    <a href="mailto:tejaswiniphalke34@gmail.com" class="btn-primary">Send an Email</a>
+    <div class="contact-links-grid">
+      <a href="mailto:tejaswiniphalke34@gmail.com" class="contact-link">
+        <div class="cl-ic">✉️</div>
+        <div><div class="cl-lbl">Email</div><div class="cl-val">tejaswiniphalke34</div></div>
+      </a>
+      <a href="tel:+918010124404" class="contact-link">
+        <div class="cl-ic">📞</div>
+        <div><div class="cl-lbl">Phone</div><div class="cl-val">+91 8010124404</div></div>
+      </a>
+      <a href="https://www.linkedin.com/in/tejaswini-phalke-8826382a6/" target="_blank" class="contact-link">
+        <div class="cl-ic">💼</div>
+        <div><div class="cl-lbl">LinkedIn</div><div class="cl-val">tejaswini-phalke</div></div>
+      </a>
+      <a href="https://github.com/tejuPhalke" target="_blank" class="contact-link">
+        <div class="cl-ic">🐙</div>
+        <div><div class="cl-lbl">GitHub</div><div class="cl-val">tejuPhalke</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-text">© 2025 Tejaswini Phalke</div>
+  <div class="footer-links">
+    <a href="https://github.com/tejuPhalke" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/tejaswini-phalke-8826382a6/" target="_blank">LinkedIn</a>
+    <a href="mailto:tejaswiniphalke34@gmail.com">Email</a>
+  </div>
+</footer>
+
+<script>
+// Count up
+const countEls = document.querySelectorAll('[data-target]');
+const countObserver = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting) {
+    countEls.forEach(el => {
+      const target = +el.dataset.target;
+      let n = 0;
+      const step = Math.ceil(target / 30);
+      const t = setInterval(() => {
+        n = Math.min(n + step, target);
+        el.textContent = n;
+        if (n >= target) clearInterval(t);
+      }, 40);
+    });
+    countObserver.disconnect();
+  }
+}, { threshold: 0.5 });
+if (countEls[0]) countObserver.observe(countEls[0].closest('.stats'));
+
+// Fade in on scroll
+const fadeEls = document.querySelectorAll('.fade-in');
+const fadeObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+fadeEls.forEach(el => fadeObserver.observe(el));
+</script>
+</body>
+</html>
